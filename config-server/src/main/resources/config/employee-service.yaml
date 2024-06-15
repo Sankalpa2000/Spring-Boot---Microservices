@@ -1,0 +1,37 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://service-registry:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+---
+
+server:
+  port: 8082
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster.lpmrzwx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster
+      database: CTSE-Dev
+
+---
+
+server:
+  port: 8082
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster.lpmrzwx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster
+      database: CTSE-Prod
